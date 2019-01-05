@@ -1,0 +1,3 @@
+DEFGATE Rzz(%phi):
+    exp(1.0i * %phi), 0
+    0, exp(1.0i * %phi)

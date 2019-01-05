@@ -1,0 +1,86 @@
+start: openqasmversion program
+
+openqasmversion: OPENQASM REAL ";"
+
+program: statement+
+
+statement: decl
+         | gatedecl goplist? "}"
+         | OPAQUE ID ["(" idlist? ")"] idlist ";"
+         | [IF "(" ID "==" NNINTEGER ")"] qop
+         | BARRIER arglist ";"
+
+decl: (QREG | CREG) ID "[" NNINTEGER "]" ";"
+
+gatedecl: GATE ID ["(" idlist? ")"] idlist "{"
+
+goplist: ( uop | BARRIER idlist ";")+
+
+qop: uop
+   | MEASURE argument "->" argument ";"
+   | RESET argument ";"
+
+uop: U "(" explist ")" argument ";"
+   | CX argument "," argument ";"
+   | ID ["(" explist? ")"] arglist ";"
+
+register: ID
+
+indexed_register: register "[" NNINTEGER "]"
+
+arglist: argument ("," argument)*
+
+idlist: ID ("," ID)*
+
+argument: register | indexed_register
+
+explist: exp ( "," exp )*
+
+exp: REAL
+   | NNINTEGER
+   | "pi"
+   | ID
+   | exp "+" exp
+   | exp "-" exp
+   | exp "*" exp
+   | exp "/" exp
+   | "-" exp
+   | exp "^" exp
+   | "(" exp ")"
+   | unaryop "(" exp ")"
+
+unaryop: SIN
+       | COS
+       | TAN
+       | EXP
+       | LN
+       | SQRT
+
+
+OPENQASM: "OPENQASM"
+OPAQUE:   "opaque"
+IF:       "if"
+BARRIER:  "barrier"
+QREG:     "qreg"
+CREG:     "creg"
+GATE:     "gate"
+MEASURE:  "measure"
+RESET:    "reset"
+U:        "U"
+CX:       "CX"
+PI:       "pi"
+SIN:      "sin"
+COS:      "cos"
+TAN:      "tan"
+EXP:      "exp"
+LN:       "ln"
+SQRT:     "sqrt"
+
+ID        : /[a-z][A-Za-z0-9_]*/
+REAL.2    : (/[0-9]+/ "." /[0-9]*/ | /[0-9]*/ "." /[0-9]+/) [ /[eE][-+]?[0-9]+/ ]
+NNINTEGER : /[1-9]+[0-9]*|0/
+
+BLANK     : /[\t \f\n]+/
+%ignore BLANK
+COMMENT   : "//" /[^\n]*/
+%ignore COMMENT
