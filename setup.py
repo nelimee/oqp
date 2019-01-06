@@ -45,7 +45,7 @@ setup(  # This is the name of your project. The first time you publish this
     # This is a one-line description or tagline of what your project does. This
     # corresponds to the "Summary" metadata field:
     # https://packaging.python.org/specifications/core-metadata/#summary
-    description="A Python3 OpenQASM parser",  # Optional
+    description="A collection of Open Quantum Parsers written in pure Python",  # Optional
     # This is an optional longer description of your project that represents
     # the body of text which users will see when they visit PyPI.
     #
@@ -121,13 +121,13 @@ setup(  # This is the name of your project. The first time you publish this
         # "License :: Nokia Open Source License (NOKOS)",
         # "License :: OSI Approved",
         # "License :: OSI Approved :: Academic Free License (AFL)",
-        # "License :: OSI Approved :: Apache Software License",
+        "License :: OSI Approved :: Apache Software License",
         # "License :: OSI Approved :: Apple Public Source License",
         # "License :: OSI Approved :: Artistic License",
         # "License :: OSI Approved :: Attribution Assurance License",
         # "License :: OSI Approved :: Boost Software License 1.0 (BSL-1.0)",
         # "License :: OSI Approved :: BSD License",
-        "License :: OSI Approved :: CEA CNRS Inria Logiciel Libre License, version 2.1 (CeCILL-2.1)",
+        # "License :: OSI Approved :: CEA CNRS Inria Logiciel Libre License, version 2.1 (CeCILL-2.1)",
         # "License :: OSI Approved :: Common Development and Distribution License 1.0 (CDDL-1.0)",
         # "License :: OSI Approved :: Common Public License",
         # "License :: OSI Approved :: Eclipse Public License 1.0 (EPL-1.0)",
@@ -338,7 +338,7 @@ setup(  # This is the name of your project. The first time you publish this
     #
     # For an analysis of "install_requires" vs pip's requirements files see:
     # https://packaging.python.org/en/latest/requirements.html
-    install_requires=['lark-parser'],  # Optional
+    install_requires=["lark-parser"],  # Optional
     # List additional groups of dependencies here (e.g. development
     # dependencies). Users will be able to install these using the "extras"
     # syntax, for example:
