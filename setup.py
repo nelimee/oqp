@@ -15,10 +15,17 @@ from os import path
 from setuptools import setup, find_packages
 
 here = path.abspath(path.dirname(__file__))
+PACKAGE_NAME = "oqp"
 
 # Get the long description from the README file
 with open(path.join(here, "README.rst"), encoding="utf-8") as f:
     long_description = f.read()
+
+# try:
+#     import pypandoc
+# except ImportError:
+#     print("pypandoc is not installed. Please install the [dev] dependencies with "
+#           "'pip install {}[dev]'.".format(PACKAGE_NAME))
 
 # Arguments marked as "Required" below must be included for upload to PyPI.
 # Fields marked as "Optional" may be commented out.
@@ -34,7 +41,7 @@ setup(  # This is the name of your project. The first time you publish this
     # There are some restrictions on what makes a valid project name
     # specification here:
     # https://packaging.python.org/specifications/core-metadata/#name
-    name="oqp",  # Required
+    name=PACKAGE_NAME,  # Required
     # Versions should comply with PEP 440:
     # https://www.python.org/dev/peps/pep-0440/
     #
@@ -65,7 +72,7 @@ setup(  # This is the name of your project. The first time you publish this
     #
     # This field corresponds to the "Description-Content-Type" metadata field:
     # https://packaging.python.org/specifications/core-metadata/#description-content-type-optional
-    long_description_content_type="text/x-rst",  # Optional (see note above)
+    long_description_content_type="text/markdown",  # Optional (see note above)
     # This should be a valid link to your project's main homepage.
     #
     # This field corresponds to the "Home-Page" metadata field:
@@ -77,7 +84,7 @@ setup(  # This is the name of your project. The first time you publish this
     # This should be a valid email address corresponding to the author listed
     # above.
     author_email="adrien.suau@grenoble-inp.org",  # Optional
-    license="CeCILL-A",
+    license="Apache 2.0",
     # Classifiers help users find your project by categorizing it.
     #
     # For a list of valid classifiers, see https://pypi.org/classifiers/
@@ -348,7 +355,7 @@ setup(  # This is the name of your project. The first time you publish this
     # Similar to `install_requires` above, these must be valid existing
     # projects.
     extras_require={  # Optional
-        # 'dev': ['check-manifest'],
+        'dev':  ['pypandoc'],
         'test': ['parameterized'],
     },
     # If there are data files included in your packages that need to be
